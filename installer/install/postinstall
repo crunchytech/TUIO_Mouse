@@ -1,0 +1,14 @@
+#!/bin/sh
+
+exec > /Users/Shared/tuio_mouse_install_output.log
+exec 2>&1
+
+user=$(stat -f%Su /dev/console)
+echo "User Is $user"
+
+mv /tmp/tuiomousedriver/TuioMouse.jar /Applications/Utilities/
+mv /tmp/tuiomousedriver/com.crunchy.tuiomousedriver.plist /Library/LaunchAgents
+
+chmod 777 /Applications/Utilities/TuioMouse.jar
+
+su $user -c "launchctl load /Library/LaunchAgents/com.crunchy.tuiomousedriver.plist"
