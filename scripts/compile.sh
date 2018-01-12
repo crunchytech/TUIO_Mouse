@@ -7,5 +7,5 @@ jar xf ../lib/libTUIO.jar
 rm -r META-INF
 cd ../
 echo "jaring in "$(pwd)
-jar cvmf $start_dir/MANIFEST.MF $start_dir/out/TuioMouse.jar -C bin .
+jar cvmf "$start_dir"/MANIFEST.MF "$start_dir"/out/TuioMouse.jar -C bin .
 
