@@ -23,6 +23,8 @@
 package com.crunchy.MouseDriver;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Date;
+
 import TUIO.*;
 
 public class TuioMouse implements TuioListener {
@@ -31,32 +33,77 @@ public class TuioMouse implements TuioListener {
 	private int width = 0;
 	private int height = 0;
 	private long activeCuror = -1;
+	private MouseState currentState = MouseState.MouseState_Up;
+	private Date lastEvent;
+	
 	public void addTuioObject(TuioObject tobj) {}
 	public void updateTuioObject(TuioObject tobj) {}	
 	public void removeTuioObject(TuioObject tobj) {}
 	public void refresh(TuioTime bundleTime) {}
 	
 	public void addTuioCursor(TuioCursor tcur) {
-		if(activeCuror == -1)
-		{
-			activeCuror = tcur.getCursorID();
+		
+		if(activeCuror != tcur.getCursorID()) {
 			if (robot!=null) robot.mouseMove(tcur.getScreenX(width),tcur.getScreenY(height));
-			if (robot!=null) robot.mousePress(InputEvent.BUTTON1_MASK);
+			if (robot!=null) robot.mouseRelease(InputEvent.BUTTON1_MASK);
 		}
+		
+		activeCuror = tcur.getCursorID();
+		if (robot!=null) 
+		{
+			robot.mouseMove(tcur.getScreenX(width),tcur.getScreenY(height));
+			robot.mousePress(InputEvent.BUTTON1_MASK);
+			currentState = MouseState.MouseState_Down;
+			lastEvent = new Date();
+		}
+		
 	}
 
 	public void updateTuioCursor(TuioCursor tcur) {
 		if(activeCuror == tcur.getCursorID())
 		{
 			if (robot!=null) robot.mouseMove(tcur.getScreenX(width),tcur.getScreenY(height));
+			currentState = MouseState.MouseState_Move;
 		}
+		else
+		{
+			if (robot!=null) robot.mouseMove(tcur.getScreenX(width),tcur.getScreenY(height));
+			if (robot!=null) robot.mouseRelease(InputEvent.BUTTON1_MASK);
+			
+			activeCuror = tcur.getCursorID();
+			if (robot!=null) 
+			{
+				robot.mouseMove(tcur.getScreenX(width),tcur.getScreenY(height));
+				robot.mousePress(InputEvent.BUTTON1_MASK);
+				currentState = MouseState.MouseState_Down;
+			}
+		}
+		
+		lastEvent = new Date();
 	}
 	
 	public void removeTuioCursor(TuioCursor tcur) {
 		if(activeCuror == tcur.getCursorID()) {
 			if (robot!=null) robot.mouseMove(tcur.getScreenX(width),tcur.getScreenY(height));
 			if (robot!=null) robot.mouseRelease(InputEvent.BUTTON1_MASK);
+			currentState = MouseState.MouseState_Up;
 			activeCuror = -1;
+			
+			lastEvent = new Date();
+		}
+	}
+	
+	public void Update()
+	{
+		if(currentState != MouseState.MouseState_Up)
+		{
+			Date currentDate = new Date();
+			if (currentDate.getTime() - lastEvent.getTime() > 60)
+			{
+				if (robot!=null) robot.mouseRelease(InputEvent.BUTTON1_MASK);
+				currentState = MouseState.MouseState_Up;
+				activeCuror = -1;
+			}
 		}
 	}
 	
@@ -72,6 +119,13 @@ public class TuioMouse implements TuioListener {
 		width  = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 		height = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 	}
+	
+	public static enum MouseState
+	{
+		MouseState_Down,
+		MouseState_Move,
+		MouseState_Up
+	};
 
 	public static void main(String argv[]) {
 	
