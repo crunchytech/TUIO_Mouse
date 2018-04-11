@@ -1,1 +1,0 @@
-pkgbuild --identifier com.crunchy.tuiomousedriver --install-location /tmp/tuiomousedriver --root staging --scripts install/ TuioMouse.pkg
