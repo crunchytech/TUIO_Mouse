@@ -66,7 +66,11 @@ void UDPServer::runServer()
                 memcpy(&data,buff,sizeof(MouseData));
                 static unsigned long long seq = 0;
                 if (data.seq < seq)
+                {
                     std::cout << "Out Of Order Message ! " << seq << " " << data.seq << std::endl;
+                    continue;
+                }
+                seq = data.seq;
                 std::cout << "MouseData x " << data.locationX << " Y " << data.locationY << " event " << data.eventType << std::endl;
                 
                 if(data.eventType == NX_LMOUSEDOWN)

@@ -58,7 +58,7 @@ void TCPServer::runServer()
             std::cerr << "ERROR accepting socket !\n";
             continue;
         }
-        size_t totalBytes = 0;
+        ssize_t totalBytes = 0;
         char buff[64] = {0};
         while(shouldRun) // read from client loop
         {
