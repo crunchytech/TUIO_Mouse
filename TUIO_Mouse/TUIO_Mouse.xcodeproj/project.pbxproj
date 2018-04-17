@@ -493,6 +493,7 @@
 				DEVELOPMENT_TEAM = Y48DAMQU5J;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYMROOT = "$(PROJECT_DIR)";
 			};
 			name = Debug;
 		};
@@ -503,6 +504,7 @@
 				DEVELOPMENT_TEAM = Y48DAMQU5J;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYMROOT = "$(PROJECT_DIR)";
 			};
 			name = Release;
 		};

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>KeepAlive</key>
+	<true/>
+	<key>Label</key>
+	<string>com.crunchy.tuiomousedriver</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/Applications/Utilities/TUIO_Mouse</string>
+		<string>-t</string>
+		<string>-p 3333</string>
+	</array>
+	<key>StandardOutPath</key>
+	<string>/Users/Shared/tuiomouse.log</string>
+	<key>StandardErrorPath</key>
+	<string>/Users/Shared/tuiomouse.log</string>
+	<key>SoftResourceLimits</key>
+	<dict>
+		<key>Core</key>
+		<integer>9223372036854775807</integer>
+	</dict>
+	<key>HardResourceLimits</key>
+	<dict>
+		<key>Core</key>
+		<integer>9223372036854775807</integer>
+	</dict>
+</dict>
+</plist>
