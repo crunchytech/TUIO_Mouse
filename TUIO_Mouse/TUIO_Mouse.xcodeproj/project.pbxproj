@@ -491,7 +491,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y48DAMQU5J;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/TUIO/**",
+					"$(SRCROOT)/**",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SYMROOT = "$(PROJECT_DIR)";
 			};
@@ -502,7 +505,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y48DAMQU5J;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/TUIO/**",
+					"$(SRCROOT)/**",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SYMROOT = "$(PROJECT_DIR)";
 			};
