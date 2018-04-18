@@ -36,8 +36,17 @@ TCPServer::TCPServer(int port)
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_addr.s_addr = INADDR_ANY;
     serv_addr.sin_port = htons(this->port);
-    if (bind(serverSock, (struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0)
-         std::cerr << "ERROR on binding\n";
+    int serr = bind(serverSock, (struct sockaddr *) &serv_addr,sizeof(serv_addr));
+    if (serr < 0)
+    {
+        std::cerr << "ERROR on binding " << serr << " errno " << errno << std::endl;
+        bool notBound = true;
+        do{
+            std::cout << " Retring Binding in 10 seconds \n";
+            serr = bind(serverSock, (struct sockaddr *) &serv_addr,sizeof(serv_addr));
+            if(serr >= 0)notBound = false;
+        }while(notBound);
+    }
 }
 
 TCPServer::~TCPServer()
