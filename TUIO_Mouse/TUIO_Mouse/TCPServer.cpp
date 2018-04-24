@@ -30,7 +30,7 @@ TCPServer::TCPServer(int port)
     {
         std::cerr << "Error Creating Socket !! \n";
     }
-    
+     
     bzero((char *) &serv_addr, sizeof(serv_addr));
     
     serv_addr.sin_family = AF_INET;
@@ -39,12 +39,20 @@ TCPServer::TCPServer(int port)
     int serr = bind(serverSock, (struct sockaddr *) &serv_addr,sizeof(serv_addr));
     if (serr < 0)
     {
-        std::cerr << "ERROR on binding " << serr << " errno " << errno << std::endl;
+        std::cerr << "ERROR on binding " << strerror(errno) << std::endl;
         bool notBound = true;
         do{
             std::cout << " Retring Binding in 10 seconds \n";
             serr = bind(serverSock, (struct sockaddr *) &serv_addr,sizeof(serv_addr));
-            if(serr >= 0)notBound = false;
+            if(serr >= 0)
+            {
+                notBound = false;
+            }
+            else
+            {
+                usleep(10000000);
+            }
+            
         }while(notBound);
     }
 }
@@ -64,17 +72,18 @@ void TCPServer::runServer()
         clientSock = accept(serverSock, (struct sockaddr *)&client, &cl);
         if(clientSock < 0)
         {
-            std::cerr << "ERROR accepting socket !\n";
+            std::cerr << "ERROR accepting socket " << strerror(errno) << std::endl;
             continue;
         }
         ssize_t totalBytes = 0;
         char buff[64] = {0};
-        while(shouldRun) // read from client loop
+        while(shouldRun) // read from client loopb
         {
             ssize_t bytesRead = read(clientSock,&buff[totalBytes],64);
             if(bytesRead <= 0)
             {
-                std::cerr << "Error Reading From Socket " << bytesRead << std::endl;
+                std::cerr << "Error Reading From Socket " << strerror(errno) << std::endl;
+                close(clientSock);
                 break;
             }
             
