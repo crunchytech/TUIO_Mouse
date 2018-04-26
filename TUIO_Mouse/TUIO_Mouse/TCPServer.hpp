@@ -9,17 +9,16 @@
 #ifndef TCPServer_hpp
 #define TCPServer_hpp
 
-#include <stdio.h>
+#import <CoreFoundation/CoreFoundation.h>
 
 class TCPServer
 {
 private:
     int port;
-    int serverSock;
-    int clientSock;
     bool shouldRun;
+    CFSocketRef serverSock;
     
-private:
+public:
     void handleBuffer(char* buff,ssize_t bytes_read);
 
 public:

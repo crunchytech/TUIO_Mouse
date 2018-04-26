@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CB4B62B0207E44E40072FF5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB4B62AF207E44E40072FF5E /* main.cpp */; };
-		CB4B62B8207E45160072FF5E /* TCPServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB4B62B6207E45160072FF5E /* TCPServer.cpp */; };
 		CB4B634C207E4C390072FF5E /* IpEndpointName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB4B6340207E4C390072FF5E /* IpEndpointName.cpp */; };
 		CB4B634D207E4C390072FF5E /* NetworkingUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB4B6345207E4C390072FF5E /* NetworkingUtils.cpp */; };
 		CB4B634E207E4C390072FF5E /* UdpSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB4B6346207E4C390072FF5E /* UdpSocket.cpp */; };
@@ -40,6 +39,7 @@
 		CB4B6380207E55EA0072FF5E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4B637F207E55EA0072FF5E /* CoreGraphics.framework */; };
 		CB4B6382207E55FB0072FF5E /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4B6381207E55FB0072FF5E /* CoreFoundation.framework */; };
 		CB9A6A0C2084F25A00555B9C /* UDPServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CB9A6A0A2084F25A00555B9C /* UDPServer.cpp */; };
+		CBE7AEED20921CCE000FB3BB /* TCPServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CBE7AEEC20921CCE000FB3BB /* TCPServer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,7 +57,6 @@
 /* Begin PBXFileReference section */
 		CB4B62AC207E44E40072FF5E /* TUIO_Mouse */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TUIO_Mouse; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB4B62AF207E44E40072FF5E /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		CB4B62B6207E45160072FF5E /* TCPServer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TCPServer.cpp; sourceTree = "<group>"; };
 		CB4B62B7207E45160072FF5E /* TCPServer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TCPServer.hpp; sourceTree = "<group>"; };
 		CB4B6316207E4C210072FF5E /* DevReceiver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DevReceiver.cpp; sourceTree = "<group>"; };
 		CB4B6317207E4C210072FF5E /* DevReceiver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DevReceiver.h; sourceTree = "<group>"; };
@@ -129,6 +128,7 @@
 		CB9A6A092084F22F00555B9C /* MouseDataType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MouseDataType.h; sourceTree = "<group>"; };
 		CB9A6A0A2084F25A00555B9C /* UDPServer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UDPServer.cpp; sourceTree = "<group>"; };
 		CB9A6A0B2084F25A00555B9C /* UDPServer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UDPServer.hpp; sourceTree = "<group>"; };
+		CBE7AEEC20921CCE000FB3BB /* TCPServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TCPServer.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,7 +165,7 @@
 		CB4B62AE207E44E40072FF5E /* TUIO_Mouse */ = {
 			isa = PBXGroup;
 			children = (
-				CB4B62B6207E45160072FF5E /* TCPServer.cpp */,
+				CBE7AEEC20921CCE000FB3BB /* TCPServer.cpp */,
 				CB4B62B7207E45160072FF5E /* TCPServer.hpp */,
 				CB4B62AF207E44E40072FF5E /* main.cpp */,
 				CB4B6363207E4DF50072FF5E /* TUIOListener.cpp */,
@@ -368,13 +368,13 @@
 				CB4B6376207E50DF0072FF5E /* UdpReceiver.cpp in Sources */,
 				CB4B6377207E50DF0072FF5E /* UdpSender.cpp in Sources */,
 				CB4B6361207E4C400072FF5E /* OscTypes.cpp in Sources */,
-				CB4B62B8207E45160072FF5E /* TCPServer.cpp in Sources */,
 				CB4B6365207E4DF50072FF5E /* TUIOListener.cpp in Sources */,
 				CB4B6360207E4C400072FF5E /* OscReceivedElements.cpp in Sources */,
 				CB4B634D207E4C390072FF5E /* NetworkingUtils.cpp in Sources */,
 				CB4B634C207E4C390072FF5E /* IpEndpointName.cpp in Sources */,
 				CB4B634E207E4C390072FF5E /* UdpSocket.cpp in Sources */,
 				CB4B635F207E4C400072FF5E /* OscPrintReceivedElements.cpp in Sources */,
+				CBE7AEED20921CCE000FB3BB /* TCPServer.cpp in Sources */,
 				CB4B635E207E4C400072FF5E /* OscOutboundPacketStream.cpp in Sources */,
 				CB4B62B0207E44E40072FF5E /* main.cpp in Sources */,
 			);

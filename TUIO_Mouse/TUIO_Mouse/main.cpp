@@ -65,7 +65,7 @@ int main(int argc, const char * argv[]) {
     {
         std::cout << "Starting TCP Server\n";
         TCPServer server(port);
-//        server.runServer(); // blocks
+        server.runServer(); // blocks
 
     }
     else if (UseUDP)
