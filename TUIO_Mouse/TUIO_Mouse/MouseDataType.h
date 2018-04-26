@@ -24,7 +24,7 @@ typedef struct MouseData
     double locationX;
     double locationY;
     unsigned int eventType;
-    unsigned long long seq;
+    long long seq;
 }MouseData;
 
 #endif /* MouseDataType_h */
